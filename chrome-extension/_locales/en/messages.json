@@ -1,0 +1,106 @@
+{
+  "appName": {
+    "message": "AURA EVO",
+    "description": "Extension name"
+  },
+  "appDescription": {
+    "message": "Your digital twin. Distill your knowledge, evolve your thinking.",
+    "description": "Extension description"
+  },
+  "yourTwin": {
+    "message": "Your Twin",
+    "description": "Section title"
+  },
+  "expertMarket": {
+    "message": "Expert Market",
+    "description": "Section title"
+  },
+  "statusReady": {
+    "message": "Ready",
+    "description": "Status label"
+  },
+  "digitalSelf": {
+    "message": "Your Digital Self",
+    "description": "Twin card title"
+  },
+  "uploadPrompt": {
+    "message": "Upload documents to distill your knowledge",
+    "description": "Twin card description"
+  },
+  "distillBtn": {
+    "message": "Distill",
+    "description": "Button text"
+  },
+  "viewAll": {
+    "message": "View all",
+    "description": "Link text"
+  },
+  "financePro": {
+    "message": "Finance Pro",
+    "description": "Expert name"
+  },
+  "financeDesc": {
+    "message": "Investment & market analysis",
+    "description": "Expert description"
+  },
+  "techLead": {
+    "message": "Tech Lead",
+    "description": "Expert name"
+  },
+  "techDesc": {
+    "message": "Architecture & engineering",
+    "description": "Expert description"
+  },
+  "cuisineMaster": {
+    "message": "Cuisine Master",
+    "description": "Expert name"
+  },
+  "cuisineDesc": {
+    "message": "Recipes & techniques",
+    "description": "Expert description"
+  },
+  "freeTag": {
+    "message": "Free",
+    "description": "Price tag"
+  },
+  "premiumTag": {
+    "message": "$2.99",
+    "description": "Price tag"
+  },
+  "newChat": {
+    "message": "New Chat",
+    "description": "Button text"
+  },
+  "uploadKnowledge": {
+    "message": "Upload Knowledge",
+    "description": "Button text"
+  },
+  "settings": {
+    "message": "Settings",
+    "description": "Settings title"
+  },
+  "language": {
+    "message": "Language",
+    "description": "Language setting"
+  },
+  "english": {
+    "message": "English",
+    "description": "Language option"
+  },
+  "chinese": {
+    "message": "中文",
+    "description": "Language option"
+  },
+  "save": {
+    "message": "Save",
+    "description": "Button text"
+  },
+  "comingSoon": {
+    "message": "Coming soon",
+    "description": "Toast message"
+  },
+  "distillationSoon": {
+    "message": "Distillation coming in v0.2",
+    "description": "Toast message"
+  }
+}

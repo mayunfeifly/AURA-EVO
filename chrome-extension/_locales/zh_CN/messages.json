@@ -1,0 +1,106 @@
+{
+  "appName": {
+    "message": "AURA EVO",
+    "description": "扩展名称"
+  },
+  "appDescription": {
+    "message": "你的数字分身。蒸馏你的知识，进化你的思维。",
+    "description": "扩展描述"
+  },
+  "yourTwin": {
+    "message": "你的分身",
+    "description": "区块标题"
+  },
+  "expertMarket": {
+    "message": "专家市场",
+    "description": "区块标题"
+  },
+  "statusReady": {
+    "message": "就绪",
+    "description": "状态标签"
+  },
+  "digitalSelf": {
+    "message": "你的数字自我",
+    "description": "分身卡片标题"
+  },
+  "uploadPrompt": {
+    "message": "上传文档来蒸馏你的知识",
+    "description": "分身卡片描述"
+  },
+  "distillBtn": {
+    "message": "蒸馏",
+    "description": "按钮文字"
+  },
+  "viewAll": {
+    "message": "查看全部",
+    "description": "链接文字"
+  },
+  "financePro": {
+    "message": "金融专家",
+    "description": "专家名称"
+  },
+  "financeDesc": {
+    "message": "投资与市场分析",
+    "description": "专家描述"
+  },
+  "techLead": {
+    "message": "技术负责人",
+    "description": "专家名称"
+  },
+  "techDesc": {
+    "message": "架构与工程",
+    "description": "专家描述"
+  },
+  "cuisineMaster": {
+    "message": "美食大师",
+    "description": "专家名称"
+  },
+  "cuisineDesc": {
+    "message": "食谱与技法",
+    "description": "专家描述"
+  },
+  "freeTag": {
+    "message": "免费",
+    "description": "价格标签"
+  },
+  "premiumTag": {
+    "message": "¥19.9",
+    "description": "价格标签"
+  },
+  "newChat": {
+    "message": "新对话",
+    "description": "按钮文字"
+  },
+  "uploadKnowledge": {
+    "message": "上传知识",
+    "description": "按钮文字"
+  },
+  "settings": {
+    "message": "设置",
+    "description": "设置标题"
+  },
+  "language": {
+    "message": "语言",
+    "description": "语言设置"
+  },
+  "english": {
+    "message": "English",
+    "description": "语言选项"
+  },
+  "chinese": {
+    "message": "中文",
+    "description": "语言选项"
+  },
+  "save": {
+    "message": "保存",
+    "description": "按钮文字"
+  },
+  "comingSoon": {
+    "message": "即将推出",
+    "description": "提示信息"
+  },
+  "distillationSoon": {
+    "message": "蒸馏功能将在 v0.2 推出",
+    "description": "提示信息"
+  }
+}

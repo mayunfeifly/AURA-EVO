@@ -1,5 +1,6 @@
-/* AURA EVO - Apple-style Minimal Design */
-/* Variables */
+/* AURA EVO - Apple-style Minimal Design with Dark Mode */
+
+/* Variables - Light Mode (Default) */
 :root {
   --aura-bg: #fafafa;
   --aura-surface: #ffffff;
@@ -16,6 +17,50 @@
   --aura-transition: all 0.2s cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
+/* Dark Mode - System Preference */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --aura-bg: #000000;
+    --aura-surface: #1c1c1e;
+    --aura-text: #ffffff;
+    --aura-text-secondary: #8e8e93;
+    --aura-border: #38383a;
+    --aura-primary: #0a84ff;
+    --aura-primary-hover: #409cff;
+    --aura-success: #30d158;
+    --aura-shadow: 0 1px 3px rgba(0,0,0,0.3);
+    --aura-shadow-hover: 0 4px 12px rgba(0,0,0,0.5);
+  }
+}
+
+/* Dark Mode - Manual Override */
+[data-theme="dark"] {
+  --aura-bg: #000000;
+  --aura-surface: #1c1c1e;
+  --aura-text: #ffffff;
+  --aura-text-secondary: #8e8e93;
+  --aura-border: #38383a;
+  --aura-primary: #0a84ff;
+  --aura-primary-hover: #409cff;
+  --aura-success: #30d158;
+  --aura-shadow: 0 1px 3px rgba(0,0,0,0.3);
+  --aura-shadow-hover: 0 4px 12px rgba(0,0,0,0.5);
+}
+
+/* Light Mode - Manual Override */
+[data-theme="light"] {
+  --aura-bg: #fafafa;
+  --aura-surface: #ffffff;
+  --aura-text: #1a1a1a;
+  --aura-text-secondary: #6b6b6b;
+  --aura-border: #e8e8e8;
+  --aura-primary: #0071e3;
+  --aura-primary-hover: #0077ed;
+  --aura-success: #34c759;
+  --aura-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  --aura-shadow-hover: 0 4px 12px rgba(0,0,0,0.08);
+}
+
 /* Reset */
 * {
   margin: 0;
@@ -30,6 +75,7 @@ body {
   width: 360px;
   min-height: 500px;
   -webkit-font-smoothing: antialiased;
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
 /* Container */
@@ -47,6 +93,7 @@ body {
   padding: 16px 20px;
   background: var(--aura-surface);
   border-bottom: 1px solid var(--aura-border);
+  transition: background 0.3s ease, border-color 0.3s ease;
 }
 
 .aura-logo {
@@ -69,6 +116,7 @@ body {
   inset: 3px;
   border-radius: 50%;
   background: var(--aura-surface);
+  transition: background 0.3s ease;
 }
 
 .aura-title {
@@ -81,10 +129,45 @@ body {
   font-size: 11px;
   font-weight: 600;
   color: var(--aura-primary);
-  background: rgba(0,113,227,0.08);
+  background: rgba(10,132,255,0.08);
   padding: 3px 8px;
   border-radius: 100px;
   letter-spacing: 0.5px;
+}
+
+/* Theme Toggle */
+.aura-theme-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 8px;
+  background: var(--aura-bg);
+  border-radius: 100px;
+  border: 1px solid var(--aura-border);
+}
+
+.aura-theme-btn {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  color: var(--aura-text-secondary);
+  transition: var(--aura-transition);
+}
+
+.aura-theme-btn:hover {
+  background: var(--aura-border);
+}
+
+.aura-theme-btn--active {
+  background: var(--aura-primary);
+  color: white;
 }
 
 /* Main */
@@ -102,6 +185,7 @@ body {
   border-radius: var(--aura-radius);
   padding: 16px;
   box-shadow: var(--aura-shadow);
+  transition: background 0.3s ease, box-shadow 0.3s ease;
 }
 
 .aura-section-header {
@@ -126,7 +210,7 @@ body {
 
 .aura-status--ready {
   color: var(--aura-success);
-  background: rgba(52,199,89,0.08);
+  background: rgba(48,209,88,0.08);
 }
 
 .aura-link {
@@ -148,6 +232,7 @@ body {
   padding: 12px;
   background: var(--aura-bg);
   border-radius: var(--aura-radius-sm);
+  transition: background 0.3s ease;
 }
 
 .aura-twin-avatar {
@@ -182,6 +267,7 @@ body {
   font-size: 14px;
   font-weight: 600;
   margin-bottom: 2px;
+  color: var(--aura-text);
 }
 
 .aura-twin-info p {
@@ -248,7 +334,7 @@ body {
 }
 
 .aura-expert-card:hover {
-  background: #f0f0f0;
+  background: var(--aura-border);
 }
 
 .aura-expert-icon {
@@ -276,6 +362,7 @@ body {
   font-size: 13px;
   font-weight: 600;
   margin-bottom: 1px;
+  color: var(--aura-text);
 }
 
 .aura-expert-info p {
@@ -288,13 +375,13 @@ body {
   font-weight: 600;
   padding: 3px 8px;
   border-radius: 100px;
-  background: rgba(0,113,227,0.08);
+  background: rgba(10,132,255,0.08);
   color: var(--aura-primary);
   flex-shrink: 0;
 }
 
 .aura-tag--premium {
-  background: rgba(255,149,0,0.08);
+  background: rgba(255,159,0,0.08);
   color: #ff9500;
 }
 
@@ -321,6 +408,7 @@ body {
   border-top: 1px solid var(--aura-border);
   font-size: 11px;
   color: var(--aura-text-secondary);
+  transition: background 0.3s ease, border-color 0.3s ease;
 }
 
 .aura-footer a {
