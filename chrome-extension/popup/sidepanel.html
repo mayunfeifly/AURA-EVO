@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AURA EVO</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="aura-container">
+    <!-- Header -->
+    <header class="aura-header">
+      <div class="aura-logo">
+        <div class="aura-ring"></div>
+        <span class="aura-title">AURA</span>
+      </div>
+      <div class="aura-theme-toggle">
+        <button class="aura-theme-btn aura-theme-btn--active" data-theme="auto" title="Follow System">🌓</button>
+        <button class="aura-theme-btn" data-theme="light" title="Light">☀️</button>
+        <button class="aura-theme-btn" data-theme="dark" title="Dark">🌙</button>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="aura-main">
+      <!-- User Twin Status -->
+      <section class="aura-section aura-twin">
+        <div class="aura-section-header">
+          <h2 data-i18n="yourTwin">Your Twin</h2>
+          <span class="aura-status aura-status--ready" data-i18n="statusReady">Ready</span>
+        </div>
+        <div class="aura-twin-card">
+          <div class="aura-twin-avatar">
+            <div class="aura-twin-ring"></div>
+            <span class="aura-twin-initial">Y</span>
+          </div>
+          <div class="aura-twin-info">
+            <h3 data-i18n="digitalSelf">Your Digital Self</h3>
+            <p data-i18n="uploadPrompt">Upload documents to distill your knowledge</p>
+          </div>
+          <button class="aura-btn aura-btn--primary" data-i18n="distillBtn">Distill</button>
+        </div>
+      </section>
+
+      <!-- Expert Marketplace -->
+      <section class="aura-section aura-market">
+        <div class="aura-section-header">
+          <h2 data-i18n="expertMarket">Expert Market</h2>
+          <a href="#" class="aura-link" data-i18n="viewAll">View all</a>
+        </div>
+        <div class="aura-expert-list">
+          <div class="aura-expert-card">
+            <div class="aura-expert-icon aura-expert-icon--finance">F</div>
+            <div class="aura-expert-info">
+              <h4 data-i18n="financePro">Finance Pro</h4>
+              <p data-i18n="financeDesc">Investment & market analysis</p>
+            </div>
+            <span class="aura-tag" data-i18n="freeTag">Free</span>
+          </div>
+          <div class="aura-expert-card">
+            <div class="aura-expert-icon aura-expert-icon--tech">T</div>
+            <div class="aura-expert-info">
+              <h4 data-i18n="techLead">Tech Lead</h4>
+              <p data-i18n="techDesc">Architecture & engineering</p>
+            </div>
+            <span class="aura-tag" data-i18n="freeTag">Free</span>
+          </div>
+          <div class="aura-expert-card">
+            <div class="aura-expert-icon aura-expert-icon--cuisine">C</div>
+            <div class="aura-expert-info">
+              <h4 data-i18n="cuisineMaster">Cuisine Master</h4>
+              <p data-i18n="cuisineDesc">Recipes & techniques</p>
+            </div>
+            <span class="aura-tag aura-tag--premium" data-i18n="premiumTag">$2.99</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Quick Actions -->
+      <section class="aura-section aura-actions">
+        <button class="aura-btn aura-btn--ghost">
+          <span class="aura-icon">+</span>
+          <span data-i18n="newChat">New Chat</span>
+        </button>
+        <button class="aura-btn aura-btn--ghost">
+          <span class="aura-icon">↑</span>
+          <span data-i18n="uploadKnowledge">Upload Knowledge</span>
+        </button>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="aura-footer">
+      <span>v0.1.0</span>
+      <a href="https://aura-evo.com" target="_blank">aura-evo.com</a>
+    </footer>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
