@@ -1,0 +1,347 @@
+/* AURA EVO - Apple-style Minimal Design */
+/* Variables */
+:root {
+  --aura-bg: #fafafa;
+  --aura-surface: #ffffff;
+  --aura-text: #1a1a1a;
+  --aura-text-secondary: #6b6b6b;
+  --aura-border: #e8e8e8;
+  --aura-primary: #0071e3;
+  --aura-primary-hover: #0077ed;
+  --aura-success: #34c759;
+  --aura-radius: 12px;
+  --aura-radius-sm: 8px;
+  --aura-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  --aura-shadow-hover: 0 4px 12px rgba(0,0,0,0.08);
+  --aura-transition: all 0.2s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+  background: var(--aura-bg);
+  color: var(--aura-text);
+  width: 360px;
+  min-height: 500px;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Container */
+.aura-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 500px;
+}
+
+/* Header */
+.aura-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  background: var(--aura-surface);
+  border-bottom: 1px solid var(--aura-border);
+}
+
+.aura-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.aura-ring {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  position: relative;
+}
+
+.aura-ring::after {
+  content: '';
+  position: absolute;
+  inset: 3px;
+  border-radius: 50%;
+  background: var(--aura-surface);
+}
+
+.aura-title {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.aura-badge {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--aura-primary);
+  background: rgba(0,113,227,0.08);
+  padding: 3px 8px;
+  border-radius: 100px;
+  letter-spacing: 0.5px;
+}
+
+/* Main */
+.aura-main {
+  flex: 1;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Section */
+.aura-section {
+  background: var(--aura-surface);
+  border-radius: var(--aura-radius);
+  padding: 16px;
+  box-shadow: var(--aura-shadow);
+}
+
+.aura-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.aura-section-header h2 {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--aura-text);
+}
+
+.aura-status {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 100px;
+}
+
+.aura-status--ready {
+  color: var(--aura-success);
+  background: rgba(52,199,89,0.08);
+}
+
+.aura-link {
+  font-size: 13px;
+  color: var(--aura-primary);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.aura-link:hover {
+  text-decoration: underline;
+}
+
+/* Twin Card */
+.aura-twin-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  background: var(--aura-bg);
+  border-radius: var(--aura-radius-sm);
+}
+
+.aura-twin-avatar {
+  position: relative;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.aura-twin-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  opacity: 0.15;
+}
+
+.aura-twin-initial {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--aura-primary);
+  z-index: 1;
+}
+
+.aura-twin-info {
+  flex: 1;
+}
+
+.aura-twin-info h3 {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.aura-twin-info p {
+  font-size: 12px;
+  color: var(--aura-text-secondary);
+}
+
+/* Buttons */
+.aura-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: var(--aura-radius-sm);
+  font-size: 13px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: var(--aura-transition);
+  font-family: inherit;
+}
+
+.aura-btn--primary {
+  background: var(--aura-primary);
+  color: white;
+}
+
+.aura-btn--primary:hover {
+  background: var(--aura-primary-hover);
+  transform: translateY(-1px);
+  box-shadow: var(--aura-shadow-hover);
+}
+
+.aura-btn--ghost {
+  background: transparent;
+  color: var(--aura-text);
+  border: 1px solid var(--aura-border);
+  width: 100%;
+  padding: 10px;
+}
+
+.aura-btn--ghost:hover {
+  background: var(--aura-bg);
+  border-color: var(--aura-text-secondary);
+}
+
+/* Expert List */
+.aura-expert-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.aura-expert-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px;
+  border-radius: var(--aura-radius-sm);
+  background: var(--aura-bg);
+  transition: var(--aura-transition);
+  cursor: pointer;
+}
+
+.aura-expert-card:hover {
+  background: #f0f0f0;
+}
+
+.aura-expert-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 700;
+  color: white;
+  flex-shrink: 0;
+}
+
+.aura-expert-icon--finance { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+.aura-expert-icon--tech { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
+.aura-expert-icon--cuisine { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); }
+
+.aura-expert-info {
+  flex: 1;
+}
+
+.aura-expert-info h4 {
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 1px;
+}
+
+.aura-expert-info p {
+  font-size: 11px;
+  color: var(--aura-text-secondary);
+}
+
+.aura-tag {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 100px;
+  background: rgba(0,113,227,0.08);
+  color: var(--aura-primary);
+  flex-shrink: 0;
+}
+
+.aura-tag--premium {
+  background: rgba(255,149,0,0.08);
+  color: #ff9500;
+}
+
+/* Actions */
+.aura-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px;
+}
+
+.aura-icon {
+  font-size: 16px;
+  font-weight: 300;
+}
+
+/* Footer */
+.aura-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 20px;
+  background: var(--aura-surface);
+  border-top: 1px solid var(--aura-border);
+  font-size: 11px;
+  color: var(--aura-text-secondary);
+}
+
+.aura-footer a {
+  color: var(--aura-text-secondary);
+  text-decoration: none;
+}
+
+.aura-footer a:hover {
+  color: var(--aura-primary);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--aura-border);
+  border-radius: 4px;
+}
