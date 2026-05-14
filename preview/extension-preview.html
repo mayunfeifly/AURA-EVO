@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AURA EVO — Extension Preview</title>
+  <style>
+    /* ===== AURA EVO Extension Preview ===== */
+    /* Apple Settings + Arc Sidebar inspired */
+
+    :root {
+      --bg: #000000;
+      --surface: #1c1c1e;
+      --surface-hover: #2c2c2e;
+      --text: #ffffff;
+      --text-secondary: #8e8e93;
+      --primary: #0a84ff;
+      --primary-hover: #409cff;
+      --border: #38383a;
+      --success: #30d158;
+      --radius: 16px;
+      --radius-sm: 10px;
+      --transition: all 0.2s cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
+
+    [data-theme="light"] {
+      --bg: #f2f2f7;
+      --surface: #ffffff;
+      --surface-hover: #f2f2f7;
+      --text: #000000;
+      --text-secondary: #8e8e93;
+      --border: #e5e5ea;
+      --primary: #0071e3;
+      --primary-hover: #0077ed;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+      background: #2d2d2d;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 40px;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    /* Extension Container */
+    .ext-container {
+      width: 380px;
+      height: 600px;
+      background: var(--bg);
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 25px 80px rgba(0,0,0,0.5);
+      display: flex;
+      flex-direction: column;
+      transition: background 0.3s ease;
+    }
+
+    /* Header */
+    .ext-header {
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .ext-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .ext-logo-ring {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      position: relative;
+    }
+
+    .ext-logo-ring::after {
+      content: '';
+      position: absolute;
+      inset: 5px;
+      border-radius: 50%;
+      background: var(--bg);
+      transition: background 0.3s ease;
+    }
+
+    .ext-logo span {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .ext-theme-toggle {
+      display: flex;
+      gap: 2px;
+      padding: 3px;
+      background: var(--surface);
+      border-radius: 100px;
+      border: 1px solid var(--border);
+    }
+
+    .ext-theme-btn {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-secondary);
+      transition: var(--transition);
+    }
+
+    .ext-theme-btn:hover { background: var(--border); }
+    .ext-theme-btn.active { background: var(--primary); color: white; }
+
+    /* Content */
+    .ext-content {
+      flex: 1;
+      padding: 16px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    /* Section */
+    .ext-section {
+      background: var(--surface);
+      border-radius: var(--radius);
+      padding: 16px;
+      border: 1px solid var(--border);
+    }
+
+    .ext-section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+
+    .ext-section-header h2 {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .ext-status {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 100px;
+      background: rgba(48,209,88,0.12);
+      color: var(--success);
+    }
+
+    .ext-link {
+      font-size: 13px;
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    /* Twin Card */
+    .ext-twin-card {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px;
+      background: var(--bg);
+      border-radius: var(--radius-sm);
+    }
+
+    .ext-twin-avatar {
+      position: relative;
+      width: 52px;
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .ext-twin-ring {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      opacity: 0.2;
+    }
+
+    .ext-twin-initial {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--primary);
+      z-index: 1;
+    }
+
+    .ext-twin-info {
+      flex: 1;
+    }
+
+    .ext-twin-info h3 {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 3px;
+    }
+
+    .ext-twin-info p {
+      font-size: 12px;
+      color: var(--text-secondary);
+    }
+
+    .ext-btn {
+      padding: 8px 16px;
+      border-radius: var(--radius-sm);
+      font-size: 13px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+      transition: var(--transition);
+    }
+
+    .ext-btn--primary {
+      background: var(--primary);
+      color: white;
+    }
+
+    .ext-btn--primary:hover {
+      background: var(--primary-hover);
+      transform: translateY(-1px);
+    }
+
+    /* Expert List */
+    .ext-expert-list {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .ext-expert-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 12px;
+      border-radius: var(--radius-sm);
+      background: var(--bg);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .ext-expert-item:hover {
+      background: var(--surface-hover);
+    }
+
+    .ext-expert-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 700;
+      color: white;
+      flex-shrink: 0;
+    }
+
+    .ext-expert-icon--finance { background: linear-gradient(135deg, #f093fb, #f5576c); }
+    .ext-expert-icon--tech { background: linear-gradient(135deg, #4facfe, #00f2fe); }
+    .ext-expert-icon--cuisine { background: linear-gradient(135deg, #fa709a, #fee140); }
+
+    .ext-expert-info {
+      flex: 1;
+    }
+
+    .ext-expert-info h4 {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 1px;
+    }
+
+    .ext-expert-info p {
+      font-size: 11px;
+      color: var(--text-secondary);
+    }
+
+    .ext-tag {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 100px;
+      background: rgba(10,132,255,0.1);
+      color: var(--primary);
+      flex-shrink: 0;
+    }
+
+    .ext-tag--premium {
+      background: rgba(255,159,0,0.1);
+      color: #ff9500;
+    }
+
+    /* Quick Actions */
+    .ext-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .ext-action-btn {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 16px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      color: var(--text);
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      font-family: inherit;
+      transition: var(--transition);
+    }
+
+    .ext-action-btn:hover {
+      background: var(--surface-hover);
+      border-color: var(--text-secondary);
+    }
+
+    .ext-action-icon {
+      font-size: 18px;
+      width: 24px;
+      text-align: center;
+    }
+
+    /* Language Selector */
+    .ext-lang {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 16px;
+      background: var(--bg);
+      border-radius: var(--radius-sm);
+      margin-top: 8px;
+    }
+
+    .ext-lang-label {
+      font-size: 14px;
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .ext-lang-select {
+      padding: 6px 12px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text);
+      font-size: 13px;
+      font-family: inherit;
+      cursor: pointer;
+    }
+
+    /* Footer */
+    .ext-footer {
+      padding: 12px 20px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 11px;
+      color: var(--text-secondary);
+    }
+
+    .ext-footer a {
+      color: var(--text-secondary);
+      text-decoration: none;
+    }
+
+    .ext-footer a:hover {
+      color: var(--primary);
+    }
+
+    /* Scrollbar */
+    .ext-content::-webkit-scrollbar {
+      width: 3px;
+    }
+
+    .ext-content::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    .ext-content::-webkit-scrollbar-thumb {
+      background: var(--border);
+      border-radius: 3px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Dark Mode Preview -->
+  <div class="ext-container" id="ext-dark">
+    <div class="ext-header">
+      <div class="ext-logo">
+        <div class="ext-logo-ring"></div>
+        <span>AURA</span>
+      </div>
+      <div class="ext-theme-toggle">
+        <button class="ext-theme-btn active" onclick="setExtTheme('dark')">🌙</button>
+        <button class="ext-theme-btn" onclick="setExtTheme('light')">☀️</button>
+      </div>
+    </div>
+
+    <div class="ext-content">
+      <!-- Twin Section -->
+      <div class="ext-section">
+        <div class="ext-section-header">
+          <h2>Your Twin</h2>
+          <span class="ext-status">Ready</span>
+        </div>
+        <div class="ext-twin-card">
+          <div class="ext-twin-avatar">
+            <div class="ext-twin-ring"></div>
+            <span class="ext-twin-initial">Y</span>
+          </div>
+          <div class="ext-twin-info">
+            <h3>Your Digital Self</h3>
+            <p>Upload documents to distill your knowledge</p>
+          </div>
+          <button class="ext-btn ext-btn--primary">Distill</button>
+        </div>
+      </div>
+
+      <!-- Expert Market -->
+      <div class="ext-section">
+        <div class="ext-section-header">
+          <h2>Expert Market</h2>
+          <a href="#" class="ext-link">View all</a>
+        </div>
+        <div class="ext-expert-list">
+          <div class="ext-expert-item">
+            <div class="ext-expert-icon ext-expert-icon--finance">F</div>
+            <div class="ext-expert-info">
+              <h4>Finance Pro</h4>
+              <p>Investment & market analysis</p>
+            </div>
+            <span class="ext-tag">Free</span>
+          </div>
+          <div class="ext-expert-item">
+            <div class="ext-expert-icon ext-expert-icon--tech">T</div>
+            <div class="ext-expert-info">
+              <h4>Tech Lead</h4>
+              <p>Architecture & engineering</p>
+            </div>
+            <span class="ext-tag">Free</span>
+          </div>
+          <div class="ext-expert-item">
+            <div class="ext-expert-icon ext-expert-icon--cuisine">C</div>
+            <div class="ext-expert-info">
+              <h4>Cuisine Master</h4>
+              <p>Recipes & techniques</p>
+            </div>
+            <span class="ext-tag ext-tag--premium">$2.99</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Actions -->
+      <div class="ext-section">
+        <div class="ext-actions">
+          <button class="ext-action-btn">
+            <span class="ext-action-icon">+</span>
+            <span>New Chat</span>
+          </button>
+          <button class="ext-action-btn">
+            <span class="ext-action-icon">↑</span>
+            <span>Upload Knowledge</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Language -->
+      <div class="ext-section">
+        <div class="ext-lang">
+          <span class="ext-lang-label">🌐 Language</span>
+          <select class="ext-lang-select">
+            <option>English</option>
+            <option>中文</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="ext-footer">
+      <span>v0.1.2</span>
+      <a href="https://aura-evo.com">aura-evo.com</a>
+    </div>
+  </div>
+
+  <!-- Light Mode Preview -->
+  <div class="ext-container" data-theme="light" id="ext-light">
+    <div class="ext-header">
+      <div class="ext-logo">
+        <div class="ext-logo-ring"></div>
+        <span>AURA</span>
+      </div>
+      <div class="ext-theme-toggle">
+        <button class="ext-theme-btn" onclick="setExtTheme('dark')">🌙</button>
+        <button class="ext-theme-btn active" onclick="setExtTheme('light')">☀️</button>
+      </div>
+    </div>
+
+    <div class="ext-content">
+      <div class="ext-section">
+        <div class="ext-section-header">
+          <h2>你的分身</h2>
+          <span class="ext-status">就绪</span>
+        </div>
+        <div class="ext-twin-card">
+          <div class="ext-twin-avatar">
+            <div class="ext-twin-ring"></div>
+            <span class="ext-twin-initial">你</span>
+          </div>
+          <div class="ext-twin-info">
+            <h3>你的数字自我</h3>
+            <p>上传文档来蒸馏你的知识</p>
+          </div>
+          <button class="ext-btn ext-btn--primary">蒸馏</button>
+        </div>
+      </div>
+
+      <div class="ext-section">
+        <div class="ext-section-header">
+          <h2>专家市场</h2>
+          <a href="#" class="ext-link">查看全部</a>
+        </div>
+        <div class="ext-expert-list">
+          <div class="ext-expert-item">
+            <div class="ext-expert-icon ext-expert-icon--finance">金</div>
+            <div class="ext-expert-info">
+              <h4>金融专家</h4>
+              <p>投资与市场分析</p>
+            </div>
+            <span class="ext-tag">免费</span>
+          </div>
+          <div class="ext-expert-item">
+            <div class="ext-expert-icon ext-expert-icon--tech">技</div>
+            <div class="ext-expert-info">
+              <h4>技术负责人</h4>
+              <p>架构与工程</p>
+            </div>
+            <span class="ext-tag">免费</span>
+          </div>
+          <div class="ext-expert-item">
+            <div class="ext-expert-icon ext-expert-icon--cuisine">美</div>
+            <div class="ext-expert-info">
+              <h4>美食大师</h4>
+              <p>食谱与技法</p>
+            </div>
+            <span class="ext-tag ext-tag--premium">¥19.9</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="ext-section">
+        <div class="ext-actions">
+          <button class="ext-action-btn">
+            <span class="ext-action-icon">+</span>
+            <span>新对话</span>
+          </button>
+          <button class="ext-action-btn">
+            <span class="ext-action-icon">↑</span>
+            <span>上传知识</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="ext-section">
+        <div class="ext-lang">
+          <span class="ext-lang-label">🌐 语言</span>
+          <select class="ext-lang-select">
+            <option>English</option>
+            <option selected>中文</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="ext-footer">
+      <span>v0.1.2</span>
+      <a href="https://aura-evo.com">aura-evo.com</a>
+    </div>
+  </div>
+
+  <script>
+    function setExtTheme(theme) {
+      document.querySelectorAll('.ext-container').forEach(container => {
+        container.setAttribute('data-theme', theme);
+      });
+      document.querySelectorAll('.ext-theme-btn').forEach(btn => {
+        btn.classList.toggle('active', 
+          (btn.textContent === '🌙' && theme === 'dark') ||
+          (btn.textContent === '☀️' && theme === 'light')
+        );
+      });
+    }
+  </script>
+</body>
+</html>
